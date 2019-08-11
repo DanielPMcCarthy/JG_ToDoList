@@ -6,7 +6,7 @@ var incompleteTaskHolder=document.getElementById("incomplete-tasks"); // <ul> #i
 var completedTasksHolder=document.getElementById("completed-tasks"); // completed-tasks
 
 
-//New Item 
+// NEW ITEM 
 var createNewTaskElement=function(taskString){
 
 	var listItem=document.createElement("li");
@@ -39,9 +39,8 @@ var createNewTaskElement=function(taskString){
 	return listItem;
 }
   
-// Create A New List Item From The Input Box
+// CREATE NEW LIST FROM INPUT BOX
 var addTask=function(){
-  console.log("Add Task...");
   
 	var listItem=createNewTaskElement(taskInput.value);
 
@@ -53,19 +52,19 @@ var addTask=function(){
 
 }
 
-// Edit #incomplete-tasks
+// EDIT #incomplete-tasks
 var editTask=function(){
-console.log("Edit Task...");
-console.log("Change 'edit' to 'save'");
+// console.log("Edit Task...");
+// console.log("Change 'edit' to 'save'");
 
 var listItem=this.parentNode;
 
 var editInput=listItem.querySelector('input[type=text]');
 var label=listItem.querySelector("label");
 var containsClass=listItem.classList.contains("editMode");
+		
 		//If Parent Class = .editmode
 		if(containsClass){
-
 		// The Label Becomes Input Value
 			label.innerText=editInput.value;
 		}else{
@@ -76,20 +75,21 @@ var containsClass=listItem.classList.contains("editMode");
 		listItem.classList.toggle("editMode");
 }
 
-// Delete A Task
+// DELETE A TASK
 var deleteTask=function(){
-		console.log("Delete Task...");
+		// console.log("Delete Task...");
 
 		var listItem=this.parentNode;
 		var ul=listItem.parentNode;
+		
 		// Remove Parent <li> From <ul>
 		ul.removeChild(listItem);
 
 }
 
-// Mark Task Completed
+// MARK A TASK AS COMPLETED
 var taskCompleted=function(){
-		console.log("Complete Task...");
+		// console.log("Complete Task...");
 	
 	// Append Task <li> to #completed-tasks
 	var listItem=this.parentNode;
@@ -99,25 +99,27 @@ var taskCompleted=function(){
 }
 
 var taskIncomplete=function(){
-		console.log("Incomplete Task...");
+// console.log("Incomplete Task...");
 
     var listItem=this.parentNode;
 	    incompleteTaskHolder.appendChild(listItem);
 			  bindTaskEvents(listItem,taskCompleted);
 }
 
-var ajaxRequest=function(){
-	console.log("AJAX Request");
-}
+// var ajaxRequest=function(){
+// 	console.log("AJAX Request");
+// }
 
-// Set Click Handler To addTask Function
+// SET CLICK HANDLER TO addTask FUNCTION
 addButton.onclick=addTask;
 addButton.addEventListener("click",addTask);
-addButton.addEventListener("click",ajaxRequest);
+// addButton.addEventListener("click",ajaxRequest);
+
 
 var bindTaskEvents=function(taskListItem,checkBoxEventHandler){
-	console.log("bind list item events");
-// Select ListItems children
+// console.log("bind list item events");
+
+	// Select ListItems children
 	var checkBox=taskListItem.querySelector("input[type=checkbox]");
 	var editButton=taskListItem.querySelector("button.edit");
 	var deleteButton=taskListItem.querySelector("button.delete");
@@ -130,14 +132,14 @@ var bindTaskEvents=function(taskListItem,checkBoxEventHandler){
 			checkBox.onchange=checkBoxEventHandler;
 }
 
-// Loop Over incompleteTaskHolder <ul> <li>
+	// LOOP OVER incompleteTaskHolder <ul> <li>
 	for (var i=0; i<incompleteTaskHolder.children.length;i++){
 
 		// Bind Events To <li> chldren(tasksCompleted)
 		bindTaskEvents(incompleteTaskHolder.children[i],taskCompleted);
 	}
 
-// Loop Over completedTasksHolder <ul> <li> 
+// LOOP OVER completedTasksHolder <ul> <li> 
 	for (var i=0; i<completedTasksHolder.children.length;i++){
   
     // Bind Events To <li> chldren(tasksIncompleted)
