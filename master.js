@@ -139,7 +139,7 @@ var bindTaskEvents=function(taskListItem,checkBoxEventHandler){
 		bindTaskEvents(incompleteTaskHolder.children[i],taskCompleted);
 	}
 
-// LOOP OVER completedTasksHolder <ul> <li> 
+	// LOOP OVER completedTasksHolder <ul> <li> 
 	for (var i=0; i<completedTasksHolder.children.length;i++){
   
     // Bind Events To <li> chldren(tasksIncompleted)
